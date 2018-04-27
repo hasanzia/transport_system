@@ -3,6 +3,7 @@
 # Table name: trips
 #
 #  id                 :bigint(8)        not null, primary key
+#  description        :text
 #  distance_travelled :float
 #  ending_at          :datetime
 #  starting_at        :datetime
@@ -31,9 +32,9 @@ class Trip < ApplicationRecord
   belongs_to :vehicle
 
   validates :starting_at, presence: true
-  validate :completed_trip_should_have_duration, if: :ending_at
-  validate :completed_trip_should_not_overlap_other_trip_of_same_user_in_same_time, if: :ending_at
-  validate :completed_trip_should_not_overlap_other_trip_of_same_vehicle_in_same_time, if: :ending_at
+  validate :completed_trip_should_have_duration, if: :ending_at?
+  validate :completed_trip_should_not_overlap_other_trip_of_same_user_in_same_time, if: :ending_at?
+  validate :completed_trip_should_not_overlap_other_trip_of_same_vehicle_in_same_time, if: :ending_at?
 
   scope :all_except, ->(trip) { where.not(id: trip) }
 

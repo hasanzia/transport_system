@@ -21,10 +21,14 @@
 
 class Vehicle < ApplicationRecord
 
+  self.inheritance_column = :_type_disabled
+
   has_many :trips
 
   belongs_to :company
 
   validates :registration_number, presence: true, uniqueness: true
+
+  enum type: [:truck]
 
 end

@@ -3,6 +3,7 @@
 # Table name: trips
 #
 #  id                 :bigint(8)        not null, primary key
+#  description        :text
 #  distance_travelled :float
 #  ending_at          :datetime
 #  starting_at        :datetime
