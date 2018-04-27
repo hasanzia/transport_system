@@ -20,5 +20,11 @@
 #
 
 class Vehicle < ApplicationRecord
+
+  has_many :trips
+
   belongs_to :company
+
+  validates :registration_number, presence: true, uniqueness: true
+
 end

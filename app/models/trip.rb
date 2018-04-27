@@ -29,4 +29,6 @@ class Trip < ApplicationRecord
   belongs_to :company
   belongs_to :user
   belongs_to :vehicle
+
+  validates :starting_at, presence: true
 end
