@@ -3,7 +3,7 @@ class ApplicationController < ActionController::API
   def authenticate_user
     unless current_user
       payload = {
-        errors: "Please check parameters for authorization and try again. Provide either a authorization token or an email with password.",
+        errors: "Please check parameters for authorization and try again. Provide either an authorization token or an email with password.",
         status: 401
       }
       render json: payload, status: 401 and return
@@ -24,7 +24,7 @@ class ApplicationController < ActionController::API
     auth_token = params[:auth_token]
     if auth_token
       @current_user ||= User.find_by_authentication_token auth_token
-    elsif params[:email].present && params[:password].present?
+    elsif params[:email].present? && params[:password].present?
       user = User.find_by_email params[:email]
       @current_user ||= user if user.present? && user.valid_password?(params[:password])
     end
