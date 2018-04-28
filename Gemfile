@@ -11,6 +11,8 @@ gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.1.0', require: false
 # Flexible authentication solution for Rails with Warden
 gem 'devise', '~> 4.4'
+# Seamless second database integration for Rails
+gem 'secondbase', '~> 2.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
