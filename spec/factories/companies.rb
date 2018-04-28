@@ -11,7 +11,7 @@
 
 FactoryBot.define do
   factory :company do
-    name "MyString"
-    address "MyText"
+    name { Faker::Company.name }
+    address { Faker::Address.street_address }
   end
 end

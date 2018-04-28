@@ -37,5 +37,25 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should have_many(:trips) }
+  it { should belong_to(:company) }
+
+  it { should validate_presence_of(:first_name) }
+  it { should validate_presence_of(:last_name) }
+  it { should validate_presence_of(:email) }
+  it { should validate_uniqueness_of(:email).ignoring_case_sensitivity }
+
+  it { should allow_value(*%w(user admin)).for :role }
+
+  let!(:company) { create :company }
+  let!(:user) { create :user, company: company }
+
+  it "creates a normal user when no role is provided" do
+    expect(user.role).to eq 'user'
+  end
+
+  it "creates the authentication_token when a User is created" do
+    expect(user.authentication_token.present?).to be(true)
+  end
+
 end

@@ -36,11 +36,20 @@
 
 FactoryBot.define do
   factory :user do
-    first_name "MyString"
-    last_name "MyString"
-    email "MyString"
-    role 1
-    company nil
-    address "MyText"
+    company
+    first_name  { Faker::Name.first_name }
+    last_name   { Faker::Name.last_name }
+    email       { Faker::Internet.email }
+    password              "password"
+    password_confirmation "password"
+
+    factory :admin_user do
+      role 'admin'
+    end
+
+    factory :normal_user do
+      role 'user'
+    end
+    address { Faker::Address.street_address }
   end
 end

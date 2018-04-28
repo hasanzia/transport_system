@@ -28,11 +28,19 @@
 
 FactoryBot.define do
   factory :trip do
-    starting_at "2018-04-27 16:18:18"
-    ending_at "2018-04-27 16:18:18"
-    distance_travelled 1.5
-    company nil
-    user nil
-    vehicle nil
+    company
+    user
+    vehicle
+
+    starting_at "2018-05-01 16:18:18"
+    ending_at "2018-05-01 20:18:18"
+    distance_travelled { Faker::Number.decimal(2, 2) }
+    description { Faker::Address.city }
+
+    trait :starting_ending_same_time do
+      starting_at "2018-05-01 16:18:18"
+      ending_at "2018-05-01 16:18:18"
+    end
+
   end
 end

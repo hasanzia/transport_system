@@ -21,9 +21,9 @@
 
 FactoryBot.define do
   factory :vehicle do
-    registration_number "MyString"
-    type 1
-    description "MyText"
-    company nil
+    company
+    registration_number { Faker::Vehicle.vin }
+    type "truck"
+    description { Faker::Vehicle.manufacture }
   end
 end

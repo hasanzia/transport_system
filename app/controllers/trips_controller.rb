@@ -36,7 +36,7 @@ class TripsController < ApplicationController
 
       trips = trips&.where(" (starting_at BETWEEN '#{params[:starting_at]}' AND '#{params[:ending_at]}') OR (ending_at BETWEEN '#{params[:starting_at]}' AND '#{params[:ending_at]}') ")
       if trips.any?
-        render json: { trips: trips }
+        render json: { trips: trips }, status: 200
       else
         render json: { message: "No such trips are present at the moment."}, status: 404 and return
       end
@@ -65,7 +65,7 @@ class TripsController < ApplicationController
               trips: user_trips.size,
               distance: user_trips.sum(:distance_travelled)
             }
-            render json: { trips_summary: payload }
+            render json: { trips_summary: payload }, status: 200
           else
             render json: { message: "No such User's trip is present at the moment."}, status: 404 and return
           end
@@ -82,7 +82,7 @@ class TripsController < ApplicationController
               trips: vehicle_trips.size,
               distance: vehicle_trips.sum(:distance_travelled)
             }
-            render json: { trips_summary: payload }
+            render json: { trips_summary: payload }, status: 200
           else
             render json: { message: "No such Vehicle's trip is present at the moment."}, status: 404 and return
           end

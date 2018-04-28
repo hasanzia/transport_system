@@ -22,5 +22,11 @@
 require 'rails_helper'
 
 RSpec.describe Vehicle, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  it { should have_many(:trips) }
+  it { should belong_to(:company) }
+
+  it { should validate_presence_of(:registration_number) }
+  it { should validate_uniqueness_of(:registration_number) }
+
 end
