@@ -9,7 +9,7 @@ Things you may want to cover:
 
 * Switch to the repo directory: cd transport_system
 
-* If you're using RVM then install Ruby version 2.5.1 and Rails version 5.2: rvm install 2.5.1 && rvm gemset use transport_system --create && gem install bundler && bundle install
+* If you're using RVM then install Ruby version 2.5.1 and Rails version 5.2: rvm install 2.5.1 && rvm use 2.5.1 && rvm gemset use transport_system --create && gem install bundler && bundle install
 
 * Database setup: rails db:setup (please update config/database.yml to reflect correct user with password as per your local Postgresql setup)
 
